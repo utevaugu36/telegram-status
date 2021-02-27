@@ -5,6 +5,7 @@
 
 api_id = 0000000
 api_hash = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
+token = 'xxxxxxxxxx:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 
 statuses = {
     'game': '🃏 Играю',
@@ -37,7 +38,7 @@ path = os.path.dirname(os.path.abspath(__file__)) + "/"
 client = TelegramClient('setstatus_client', api_id, api_hash)
 bot = TelegramClient('setstatus_bot', api_id, api_hash)
 client.start()
-bot.start(bot_token="1681502332:AAE3tSKgQbon8jMLqDX5AvsItjHlfM_giyk")
+bot.start(bot_token=token)
 
 # Lookup for user's name and id
 
