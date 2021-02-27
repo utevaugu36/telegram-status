@@ -3,6 +3,7 @@
 # ALSO ENSURE, THAT THERE IS AN AVATAR avatar.jpg IN THIS DIRECTORY
 # --- CONFIG --- #
 
+user_id = 0000000000
 api_id = 0000000
 api_hash = 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 token = 'xxxxxxxxxx:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
@@ -40,24 +41,7 @@ bot = TelegramClient('setstatus_bot', api_id, api_hash)
 client.start()
 bot.start(bot_token=token)
 
-# Lookup for user's name and id
-
-base = ''
-admins = []
-
-try:
-    name = client.get_me()
-    base = name.first_name
-    admins = [name.id]
-    current_name = str(name.last_name)[1:-1]
-
-    if current_name and current_name in statuses.value():
-        for key, value in statuses.items():
-            if value == current_name:
-                current_status = key
-                break
-except:
-    pass
+admins = [user_id]
 
 # Create main menu
 
@@ -75,7 +59,6 @@ for i in range(0, len(buttons), 2):
 async def set_status(status):
     if status == 'idle':
         await client(UpdateProfileRequest(
-            first_name=base,
             last_name=''
         ))
         with open(path + 'avatar.jpg', 'rb') as f:
@@ -84,7 +67,6 @@ async def set_status(status):
         status_text = '᚜' + statuses[status] + '᚛'
 
         await client(UpdateProfileRequest(
-            first_name=base,
             last_name=status_text
         ))
 
