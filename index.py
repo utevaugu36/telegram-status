@@ -54,6 +54,9 @@ for i in range(0, len(buttons), 2):
     markup.append(buttons[i:i + 2])
 
 
+current_status = 'idle'
+
+
 # Function, that sets the status
 
 async def set_status(status):
